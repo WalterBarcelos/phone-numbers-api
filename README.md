@@ -85,7 +85,7 @@ Here you can see instructions about [how to import postman collections](https://
 
 ## Swagger
 
-Just use your browser to access the following url:
+From the projects root dir, run `npm run dev` command, without running `docker-compose up`. Then just use your browser to access the following url:
 
 - `http://localhost:3000/api-docs`
 
