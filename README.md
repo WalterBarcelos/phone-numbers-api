@@ -7,7 +7,7 @@ Backend NodeJS Developer Technical Challenge.
 - [Installation](#installation)
 - [Usage](#usage)
 - [Swagger](#swagger)
-- [Improvemtns](#improvements)
+- [Improvements](#improvements)
 
 ## Installation
 
@@ -85,7 +85,7 @@ Here you can see instructions about [how to import postman collections](https://
 
 ## Swagger
 
-From the projects root dir, run `npm run dev` command, without running `docker-compose up`. Then just use your browser to access the following url:
+From the project's root dir, run `npm run dev` command, without running `docker-compose up`. Then just use your browser to access the following url:
 
 - `http://localhost:3000/api-docs`
 
