@@ -7,7 +7,7 @@ Backend NodeJS Developer Technical Challenge.
 - [Installation](#installation)
 - [Usage](#usage)
 - [Swagger](#swagger)
-- [Doing](#doing)
+- [Improvemtns](#improvements)
 
 ## Installation
 
@@ -89,7 +89,10 @@ Just use your browser to access the following url:
 
 - `http://localhost:3000/api-docs`
 
-## Doing
+## Improvements
 
 - Improve error handling
-- Tests
+- JWT auth using external service (i.e. keycloak)
+- Add observability (Prometheus, Grafana, OpenTelemetry, etc)
+- More unit tests
+- Integration tests

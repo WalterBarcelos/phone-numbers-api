@@ -53,22 +53,22 @@ export const login = (req: Request, res: Response) => {
 export const allocatePhoneNumber = async (req: Request, res: Response) => {
     try {
         const { idPassport, name, surname, organizationId } = req.body;
-
+        // Check if the organization exists
         const existingOrganization = await Organization.findOne({ organizationId });
         if (existingOrganization) {
             throw new Error('Organization not found.');
         }
-
+        // Check if the user exists
         const existingUser = await User.findOne({ idPassport, name, surname });
         if (existingUser) {
             throw new Error('User already has a number allocated.');
         }
-
+         // Get the first available phone number
         const phoneRecord = await PhoneNumber.findOne({ allocatedTo: null });
         if (!phoneRecord) {
             throw new Error('No available phone numbers.');
         }
-
+        // Insert new user and update phone number with new user id
         await User.create({ idPassport, name, surname, organizationId, phoneNumbers: [phoneRecord._id] });
         await PhoneNumber.findByIdAndUpdate(phoneRecord._id, { allocatedTo: idPassport });
     
@@ -83,16 +83,17 @@ export const deallocatePhoneNumber = async (req: Request, res: Response) => {
     const idPassport = req.params.idPassport;
 
     try {
+        // Check if the user exists
         const existingUser = await User.findOne({ idPassport });
         if (! existingUser) {
             throw new Error('User not found.');
         }
-
+        // Check if the user has an allocated phone number
         const phoneRecord = await PhoneNumber.findOne({ allocatedTo: idPassport });
         if (!phoneRecord) {
             throw new Error('No allocated number found for this user.');
         }
-        // Deallocate phone number logic
+        // Deallocate phone number
         await PhoneNumber.updateOne({allocatedTo:idPassport}, { $set: { allocatedTo: null } });
         await User.deleteOne({ idPassport });
 

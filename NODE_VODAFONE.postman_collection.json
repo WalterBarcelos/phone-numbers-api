@@ -8,9 +8,31 @@
 	"item": [
 		{
 			"name": "getUsers",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJ1c2VybmFtZSI6InVzZXIiLCJlbWFpbCI6InVzZXJAZXhhbXBsZS5jb20ifSwiaWF0IjoxNzE5MzMzODc2LCJleHAiOjE3MTkzMzc0NzZ9.P08bfB2ivivjUK7LMwViIuOq8kseQfbSMqsVef4Yod8",
+							"type": "string"
+						}
+					]
+				},
 				"method": "GET",
 				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"organizationId\":\"667aead1bc2752f5d4958933\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
 				"url": {
 					"raw": "localhost:3000/api/users/phone-numbers",
 					"host": [
@@ -34,7 +56,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJ1c2VybmFtZSI6InVzZXIiLCJlbWFpbCI6InVzZXJAZXhhbXBsZS5jb20ifSwiaWF0IjoxNzE5MTQ1MDQ1LCJleHAiOjE3MTkxNDg2NDV9.k75JPI4amapiKxz6Y05sEQP5fnbVHu_hODxEAHvm_UM",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJ1c2VybmFtZSI6InVzZXIiLCJlbWFpbCI6InVzZXJAZXhhbXBsZS5jb20ifSwiaWF0IjoxNzE5MzMzODc2LCJleHAiOjE3MTkzMzc0NzZ9.P08bfB2ivivjUK7LMwViIuOq8kseQfbSMqsVef4Yod8",
 							"type": "string"
 						}
 					]
@@ -43,7 +65,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"userId\": 111,\n    \"phoneNumber\": \"+34633445566\"\n}",
+					"raw": "{\n    \"idPassport\": \"111\",\n    \"name\": \"Name\",\n    \"surname\":\"Surname\",\n    \"organizationId\": \"667aead1bc2752f5d4958933\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -51,7 +73,7 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:3000/api/users/2121/allocate",
+					"raw": "localhost:3000/api/users/allocate",
 					"host": [
 						"localhost"
 					],
@@ -59,7 +81,6 @@
 					"path": [
 						"api",
 						"users",
-						"2121",
 						"allocate"
 					]
 				}
@@ -74,24 +95,15 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJ1c2VybmFtZSI6InVzZXIiLCJlbWFpbCI6InVzZXJAZXhhbXBsZS5jb20ifSwiaWF0IjoxNzE5MTQ1MDQ1LCJleHAiOjE3MTkxNDg2NDV9.k75JPI4amapiKxz6Y05sEQP5fnbVHu_hODxEAHvm_UM",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJ1c2VybmFtZSI6InVzZXIiLCJlbWFpbCI6InVzZXJAZXhhbXBsZS5jb20ifSwiaWF0IjoxNzE5MzMzODc2LCJleHAiOjE3MTkzMzc0NzZ9.P08bfB2ivivjUK7LMwViIuOq8kseQfbSMqsVef4Yod8",
 							"type": "string"
 						}
 					]
 				},
 				"method": "DELETE",
 				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"userId\": 111\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
 				"url": {
-					"raw": "localhost:3000/api/users/2121/deallocate",
+					"raw": "localhost:3000/api/users/deallocate/111",
 					"host": [
 						"localhost"
 					],
@@ -99,8 +111,8 @@
 					"path": [
 						"api",
 						"users",
-						"2121",
-						"deallocate"
+						"deallocate",
+						"111"
 					]
 				}
 			},
@@ -109,6 +121,9 @@
 		{
 			"name": "LoginJWT",
 			"request": {
+				"auth": {
+					"type": "noauth"
+				},
 				"method": "POST",
 				"header": [],
 				"body": {
@@ -143,7 +158,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJ1c2VybmFtZSI6InVzZXIiLCJlbWFpbCI6InVzZXJAZXhhbXBsZS5jb20ifSwiaWF0IjoxNzE5MTU0NjczLCJleHAiOjE3MTkxNTgyNzN9.CEJgODKz5jReIio_Li2fw_BB7CdNYqJHtkxU_YijR0Y",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJ1c2VybmFtZSI6InVzZXIiLCJlbWFpbCI6InVzZXJAZXhhbXBsZS5jb20ifSwiaWF0IjoxNzE5MzMzODc2LCJleHAiOjE3MTkzMzc0NzZ9.P08bfB2ivivjUK7LMwViIuOq8kseQfbSMqsVef4Yod8",
 							"type": "string"
 						}
 					]
@@ -169,6 +184,16 @@
 		{
 			"name": "getOrganizations",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJ1c2VybmFtZSI6InVzZXIiLCJlbWFpbCI6InVzZXJAZXhhbXBsZS5jb20ifSwiaWF0IjoxNzE5MzMzODc2LCJleHAiOjE3MTkzMzc0NzZ9.P08bfB2ivivjUK7LMwViIuOq8kseQfbSMqsVef4Yod8",
+							"type": "string"
+						}
+					]
+				},
 				"method": "GET",
 				"header": [],
 				"url": {

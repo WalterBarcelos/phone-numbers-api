@@ -1,5 +1,4 @@
 import { Request, Response } from 'express';
-import PhoneNumber from '../models/Organization';
 import { handleError } from '../utils/errorHandler';
 import Organization from '../models/Organization';
 
