@@ -80,7 +80,7 @@ It will return a JWT token, wich has to be used as `Bearer Token` for the privat
 - DELETE `http://localhost:3000/api/users/deallocate/{IdPassport}` (Deallocate a phone number from a user) 
 
 
-If you use Postman, the file [NODE_VODAFONE.postman_collection.json](NODE_VODAFONE.postman_collection.json) has these endopints ready to use. Just change the data to use it.\
+If you use Postman, the file [NODE_ASSESSMENT.postman_collection.json](NODE_ASSESSMENT.postman_collection.json) has these endopints ready to use. Just change the data to use it.\
 Here you can see instructions about [how to import postman collections](https://learning.postman.com/docs/getting-started/importing-and-exporting/importing-data/).
 
 ## Swagger
