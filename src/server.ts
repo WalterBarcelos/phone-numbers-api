@@ -1,5 +1,5 @@
 import app from './app';
-import { connectToDatabase } from './services/dataBaseService';
+import { Database } from './utils/database';
 import swaggerSetup from './swagger';
 
 const PORT = process.env.PORT || 3000;
@@ -7,8 +7,9 @@ const PORT = process.env.PORT || 3000;
 // Swagger setup
 swaggerSetup(app);
 
-// Connect to MongoDB and start server
-connectToDatabase().then(() => {
+// Connect to DB and start server
+const db = Database.getInstance();
+db.connect().then(() => {
     app.listen(PORT, () => {
       console.log(`Server is running on http://localhost:${PORT}`);
     });

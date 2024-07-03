@@ -1,11 +1,13 @@
-import mongoose, { Document, Schema } from 'mongoose';
+import { Schema, model, Document } from 'mongoose';
 
-export interface Organization extends Document {
+export interface OrganizationDocument extends Document {
   name: string;
+  description: string;
 }
 
 const OrganizationSchema = new Schema({
-  name: { type: String, required: true }
+  name: { type: String, required: true },
+  description: { type: String, required: true }
 });
 
-export default mongoose.model<Organization>('Organization', OrganizationSchema);
+export default model<OrganizationDocument>('Organization', OrganizationSchema);

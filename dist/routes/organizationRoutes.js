@@ -1,3 +1,4 @@
+"use strict";
 /**
  * @swagger
  * /api/organizations/get/:
@@ -19,12 +20,15 @@
  *                 properties:
  *                   _id:
  *                     type: string
- *                   name: 
+ *                   name:
  *                     type: string
  *       '400':
  *         description: Invalid request data
  */
-
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
 /**
  * @swagger
  * /api/users/phone-numbers:
@@ -33,7 +37,7 @@
  *     tags:
  *       - Users
  *     security:
- *       - bearerAuth: []  # Require JWT for this endpoint 
+ *       - bearerAuth: []  # Require JWT for this endpoint
  *     parameters:
  *       - in: path
  *         name: organizationId
@@ -71,13 +75,10 @@
  *       '400':
  *         description: Invalid organization ID
  */
-import express from 'express';
-import { getOrganizations, getUsersWithPhoneNumber } from '../controllers/organizationController';
-import { jwtAuthMiddleware } from '../middlewares/jwtAuthMiddleware';
-
-const router = express.Router();
-
-router.get('/get', jwtAuthMiddleware, getOrganizations);
-router.get('/:organizationId/numbers', jwtAuthMiddleware, getUsersWithPhoneNumber);
-
-export default router;
+const express_1 = __importDefault(require("express"));
+const organizationController_1 = require("../controllers/organizationController");
+const jwtAuthMiddleware_1 = require("../middlewares/jwtAuthMiddleware");
+const router = express_1.default.Router();
+router.get('/get', jwtAuthMiddleware_1.jwtAuthMiddleware, organizationController_1.getOrganizations);
+router.get('/:organizationId/numbers', jwtAuthMiddleware_1.jwtAuthMiddleware, organizationController_1.getUsersWithPhoneNumber);
+exports.default = router;

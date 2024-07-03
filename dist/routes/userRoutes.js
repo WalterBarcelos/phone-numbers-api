@@ -1,3 +1,4 @@
+"use strict";
 /**
  * @swagger
  * /api/users/login:
@@ -22,7 +23,10 @@
  *       '400':
  *         description: Invalid request data
  */
-
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
 /**
  * @swagger
  * /api/users/allocate:
@@ -53,7 +57,6 @@
  *       '400':
  *         description: Invalid request data
  */
-
 /**
  * @swagger
  * /api/users/deallocate:
@@ -76,18 +79,12 @@
  *       '400':
  *         description: Invalid request data
  */
-
-import express from 'express';
-import { login, allocatePhoneNumber, deallocatePhoneNumber } from '../controllers/userController';
-import { jwtAuthMiddleware } from '../middlewares/jwtAuthMiddleware';
-
-const router = express.Router();
-
+const express_1 = __importDefault(require("express"));
+const userController_1 = require("../controllers/userController");
+const jwtAuthMiddleware_1 = require("../middlewares/jwtAuthMiddleware");
+const router = express_1.default.Router();
 // Route for user login and get jwt
-router.post('/login', login);
-
-router.post('/allocate', jwtAuthMiddleware, allocatePhoneNumber);
-router.delete('/deallocate/:idPassport', jwtAuthMiddleware, deallocatePhoneNumber);
-
-export default router;
-
+router.post('/login', userController_1.login);
+router.post('/allocate', jwtAuthMiddleware_1.jwtAuthMiddleware, userController_1.allocatePhoneNumber);
+router.delete('/deallocate/:idPassport', jwtAuthMiddleware_1.jwtAuthMiddleware, userController_1.deallocatePhoneNumber);
+exports.default = router;

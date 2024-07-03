@@ -1,3 +1,8 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
 /**
  * @swagger
  * /api/phone-numbers/available-numbers/:
@@ -19,19 +24,16 @@
  *                 properties:
  *                   _id:
  *                     type: string
- *                   number: 
+ *                   number:
  *                     type: string
  *                   allocatedTo:
- *                     type: string 
+ *                     type: string
  *       '400':
  *         description: Invalid request data
  */
-import express from 'express';
-import { getAvailableNumbers } from '../controllers/phoneNumberController';
-import { jwtAuthMiddleware } from '../middlewares/jwtAuthMiddleware';
-
-const router = express.Router();
-
-router.get('/available-numbers', jwtAuthMiddleware, getAvailableNumbers);
-
-export default router;
+const express_1 = __importDefault(require("express"));
+const phoneNumberController_1 = require("../controllers/phoneNumberController");
+const jwtAuthMiddleware_1 = require("../middlewares/jwtAuthMiddleware");
+const router = express_1.default.Router();
+router.get('/available-numbers', jwtAuthMiddleware_1.jwtAuthMiddleware, phoneNumberController_1.getAvailableNumbers);
+exports.default = router;

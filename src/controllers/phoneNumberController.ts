@@ -1,13 +1,17 @@
 import { Request, Response } from 'express';
-import PhoneNumber from '../models/PhoneNumber';
+import { IPhoneNumberRepository } from '../repositories/IPhoneNumberRepository';
+import { PhoneNumberRepository } from '../repositories/mongo/PhoneNumberRepository';
 import { handleError } from '../utils/errorHandler';
 
-export const getAvailableNumbers = async (req: Request, res: Response) => {
-    try {
-        const availableNumbers = await PhoneNumber.find({ allocatedTo: null });
-        res.json(availableNumbers);
-    } catch (error) {
-        handleError(res, error);
-    }
+const phoneNumberRepository: IPhoneNumberRepository = new PhoneNumberRepository();
 
+export const getAvailableNumbers = async (req: Request, res: Response) => {
+  try {
+    const availableNumbers = await phoneNumberRepository.findAllAvailable();
+    // Mapping results to return only phone numbers instead of objects
+    const numbers = availableNumbers == null ? [] : availableNumbers.map((phoneNumber) => phoneNumber.number);
+    res.json(numbers);
+  } catch (error) {
+    handleError(res, error);
+  }
 };

@@ -1,19 +1,22 @@
 import mongoose, { Document, Schema } from 'mongoose';
 
-export interface User extends Document {
+// Define the interface for User document
+export interface UserDocument extends Document {
   idPassport: string;
   name: string;
   surname: string;
   organizationId: string | null;
-  phoneNumbers: mongoose.Types.ObjectId[]; // Array of ObjectId references to PhoneNumber
+  phoneNumber: string; //ObjectId references to PhoneNumber
 }
 
+// Define the schema for User
 const UserSchema = new Schema({
   idPassport: { type: String, required: true },
   name: { type: String, required: true },
   surname: { type: String, required: true },
-  organizationId: { type: String, default: null },
-  phoneNumbers: [{ type: Schema.Types.ObjectId, ref: 'PhoneNumber' }] // Reference to PhoneNumber
+  organizationId: { type: Schema.Types.ObjectId, ref: 'Organization', default: null },
+  phoneNumber:  { type: String, required: true }
 });
 
-export default mongoose.model<User>('User', UserSchema);
+// Export the model with UserDocument interface
+export default mongoose.model<UserDocument>('User', UserSchema);
