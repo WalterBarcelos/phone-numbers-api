@@ -3,7 +3,7 @@ node_modules/
 
 # Optionally, you can add other files and directories to ignore:
 # .env            # Ignore environment variables file
-# .DS_Store       # Ignore macOS specific file
-# /build          # Ignore build output directory
-# /dist           # Ignore distribution directory
-# /coverage       # Ignore code coverage reports
+.DS_Store       # Ignore macOS specific file
+/build          # Ignore build output directory
+/dist           # Ignore distribution directory
+/coverage       # Ignore code coverage reports
